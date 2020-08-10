@@ -15,6 +15,7 @@ var top, bottom,left,right;
 var edges, bulletGroup, rand, bulletImage;
 var dieSound, powerupSound, shootSound, disp, moveSound;
 var restart, restaetImage, gameover, gameoverImage;
+var fullScreen, fullScreenImg;
 
 
 function preload(){
@@ -31,6 +32,7 @@ function preload(){
   moveSound = loadSound("./sounds/move.wav");
   restartImage = loadImage("./images/restart.png");
   gameoverImage = loadImage("./images/gameover.png");
+  fullScreenImg = loadImage("./images/Untitled-1.png");
   
 }
 
@@ -61,6 +63,10 @@ function setup(){
  // var bottom = createSprite(300,600,600,1);
   //edges.add(bottom);
   score = 0;
+   fullScreen = createSprite(width/2,height/2,50,50);
+  fullScreen.addImage(fullScreenImg);
+  
+
   restart = createSprite(width/2,height/2+50);
   restart.addImage(restartImage);
   restart.visible = false;
@@ -89,10 +95,11 @@ function setup(){
 function draw(){
   background(225);
     //text("Score: "+ score, Width/2-20,Height-40);
-  
+    
   fontColor = "white";
   rocket.collide(edges);
   if(gameState===PLAY){
+    
     if (ground.y > height+400){
       ground.y = ground.height/2;        
     }
@@ -159,11 +166,16 @@ if(frameCount%50===0){
     }
     }
 
-
+    if(keyDown("LEFT_ARROW")){
+      fullScreen.visible = false;
+  
+      }
   drawSprites();
   textStyle("roboto");
   textSize(20)
   text("Score: "+ score, width/2-20,50);
+  
+  
   
 }
 
