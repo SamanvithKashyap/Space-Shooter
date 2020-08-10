@@ -168,7 +168,7 @@ if(frameCount%50===0){
 }
 
 function move(){
-  if(touches.length>0){
+  
 
     if(keyDown("LEFT_ARROW")){
       rocket.x = rocket.x - 10;
@@ -176,8 +176,8 @@ function move(){
     if(keyDown("RIGHT_ARROW")){
       rocket.x = rocket.x + 10;
     }
-  touches = [];
-  }
+
+  
 }
 
 function createObstacles1(){
